@@ -12,7 +12,8 @@ export default defineNuxtConfig({
   css: ['~/assets/styles/main.scss'],
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api'
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.jpynzon.dev'
     }
   },
   image: {
@@ -20,7 +21,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      titleTemplate: '%s | Joshua Ynzon',
+      titleTemplate: '%s | Joshua Paulo Ynzon',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {

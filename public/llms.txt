@@ -1,0 +1,28 @@
+# LLMs file for the Joshua Ynzon portfolio
+
+site.title: Software Developer Portfolio
+site.owner: Joshua Paulo Ynzon
+site.description: Portfolio site for a software developer building reliable Laravel APIs, scalable Nuxt/Vue frontends, and international e-commerce operations.
+site.url: /sitemap.xml
+
+primary.sections:
+  - hero
+  - about
+  - skills
+  - journey
+  - projects
+  - contact
+
+keywords: software developer, Laravel, Nuxt.js, Vue.js, RESTful APIs, MySQL, PostgreSQL, e-commerce operations, backend engineering, frontend delivery, full-stack portfolio.
+
+featured.projects:
+  - Global E-commerce Operations Platform
+  - PassaQuiz
+  - WealthMe
+  - Quick Bites
+
+contact:
+  email: joshuapauloynzon@gmail.com
+  linkedin: https://www.linkedin.com/in/jpynzon/
+  github: https://github.com/jpynzon
+  location: Toledo City, Cebu, Philippines
