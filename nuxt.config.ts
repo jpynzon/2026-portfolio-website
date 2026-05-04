@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   ],
   css: ['~/assets/styles/main.scss'],
   runtimeConfig: {
-    backendApiBase: process.env.NUXT_BACKEND_API_BASE || 'http://localhost:3001/api',
+    backendApiBase: process.env.NUXT_BACKEND_API_BASE || 'https://api.jpynzon.dev/api',
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.jpynzon.dev',
