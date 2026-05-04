@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { FetchError } from 'ofetch'
-import { contactService } from '~/services/contact.service'
+import { contactService } from '~/services/contact/api.service'
 import type { ContactContent, ContactFormInput } from '~/types/portfolio'
 
 const contactFormSchema = z.object({
@@ -79,7 +79,7 @@ export function useContactForm() {
     isSubmitting.value = true
 
     try {
-      const response = await contactService.sendContact(parsed.data)
+      const response = await contactService().sendContact(parsed.data)
       feedback.value = response.message || `Thanks. I will get back to you at ${contact.email}.`
       feedbackTone.value = 'success'
       resetForm()
