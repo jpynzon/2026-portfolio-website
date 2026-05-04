@@ -11,9 +11,13 @@ export default defineNuxtConfig({
   ],
   css: ['~/assets/styles/main.scss'],
   runtimeConfig: {
+    backendApiBase: process.env.NUXT_BACKEND_API_BASE || 'http://localhost:3001/api',
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.jpynzon.dev'
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.jpynzon.dev',
+      turnstile: {
+        siteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY || ''
+      }
     }
   },
   image: {
@@ -22,6 +26,13 @@ export default defineNuxtConfig({
   app: {
     head: {
       titleTemplate: '%s | Joshua Paulo Ynzon',
+      script: [
+        {
+          src: 'https://challenges.cloudflare.com/turnstile/v0/api.js',
+          async: true,
+          defer: true
+        }
+      ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {

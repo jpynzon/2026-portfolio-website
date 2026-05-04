@@ -15,6 +15,8 @@ const emit = defineEmits<{
   'field-update': [payload: ContactFieldUpdate]
   submit: []
 }>()
+
+const turnstileToken = ref('')
 </script>
 
 <template>
@@ -90,6 +92,14 @@ const emit = defineEmits<{
           />
           <span v-if="errors.message" class="form-error">{{ errors.message }}</span>
         </label>
+
+        <div class="turnstile-container">
+          <Turnstile
+            :site-key="$config.public.turnstile.siteKey"
+            v-model="form.turnstileToken"
+          />
+          <span v-if="errors.turnstileToken" class="form-error">{{ errors.turnstileToken }}</span>
+        </div>
 
         <button class="button button--primary" type="submit" :disabled="isSubmitting">
           {{ isSubmitting ? 'Sending...' : 'Send Message' }}

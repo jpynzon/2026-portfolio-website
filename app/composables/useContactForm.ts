@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { FetchError } from 'ofetch'
 import { contactService } from '~/services/contact.service'
 import type { ContactContent, ContactFormInput } from '~/types/portfolio'
 
@@ -9,7 +10,8 @@ const contactFormSchema = z.object({
     .string()
     .trim()
     .min(20, 'Message should be at least 20 characters.')
-    .max(1200, 'Message is too long.')
+    .max(1200, 'Message is too long.'),
+  turnstileToken: z.string().trim().min(1, 'Please complete the CAPTCHA.')
 })
 
 export type ContactFieldUpdate = {
@@ -21,13 +23,15 @@ export function useContactForm() {
   const form = reactive<ContactFormInput>({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    turnstileToken: ''
   })
 
   const errors = reactive<Record<keyof ContactFormInput, string>>({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    turnstileToken: ''
   })
 
   const isSubmitting = ref(false)
@@ -38,12 +42,14 @@ export function useContactForm() {
     form.name = ''
     form.email = ''
     form.message = ''
+    form.turnstileToken = ''
   }
 
   function clearErrors() {
     errors.name = ''
     errors.email = ''
     errors.message = ''
+    errors.turnstileToken = ''
   }
 
   function clearFeedback() {
@@ -78,8 +84,14 @@ export function useContactForm() {
       feedbackTone.value = 'success'
       resetForm()
       return true
-    } catch {
-      feedback.value = 'Something went wrong while sending your message. Please try again.'
+    } catch (error) {
+      if (error instanceof FetchError) {
+        const payload = error.data as { message?: string } | undefined
+        feedback.value =
+          payload?.message || error.statusMessage || 'Something went wrong while sending your message. Please try again.'
+      } else {
+        feedback.value = 'Something went wrong while sending your message. Please try again.'
+      }
       feedbackTone.value = 'error'
       return false
     } finally {
@@ -98,4 +110,3 @@ export function useContactForm() {
     submit
   }
 }
-
