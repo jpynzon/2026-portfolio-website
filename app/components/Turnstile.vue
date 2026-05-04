@@ -1,4 +1,5 @@
 <template>
+  <!-- TURNSTILE -->
   <div
     class="cf-turnstile"
     :data-sitekey="siteKey"
