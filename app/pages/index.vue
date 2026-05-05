@@ -52,6 +52,10 @@ async function handleSubmit() {
       <AboutSection :about="content.about" />
       <SkillsSection :groups="content.skills" />
       <JourneySection :items="content.journey" />
+      <Chatbot
+        :avatar-src="content.hero.photo.src"
+        :avatar-alt="content.hero.photo.alt"
+      />
       <ProjectsSection :projects="featuredProjects" />
       <ContactSection
         :contact="content.contact"
