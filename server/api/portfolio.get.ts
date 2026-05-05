@@ -22,7 +22,7 @@ export default defineEventHandler((): PortfolioPayload => {
         href: '#contact'
       },
       photo: {
-        src: 'https://res.cloudinary.com/du6rliaeg/image/upload/v1777713829/JoshuaYnzon_Formal_lwbikz.jpg',
+        src: 'https://res.cloudinary.com/du6rliaeg/image/upload/v1778002610/Joshua_Paulo_Avatar_zsq7d3.webp',
         alt: 'Portrait placeholder for Joshua Paulo Ynzon'
       },
       stats: [
