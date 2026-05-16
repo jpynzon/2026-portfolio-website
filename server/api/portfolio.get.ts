@@ -207,7 +207,7 @@ export default defineEventHandler((): PortfolioPayload => {
     ],
     journey: [
       {
-        role: 'Back End Web Developer',
+        role: 'Full Stack Web Developer',
         company: 'Glophics PH Inc.',
         period: 'May 2025 to April 2026',
         summary:
