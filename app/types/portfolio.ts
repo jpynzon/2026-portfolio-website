@@ -69,6 +69,7 @@ export interface ProjectItem {
 export interface JourneyItem {
   role: string
   company: string
+  logo?: string
   period: string
   summary: string
   highlights: string[]

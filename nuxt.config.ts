@@ -28,6 +28,13 @@ export default defineNuxtConfig({
       titleTemplate: '%s | Joshua Paulo Ynzon',
       script: [
         {
+          // Apply the saved/system theme before first paint (no flash).
+          innerHTML:
+            "(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();",
+          tagPosition: 'head',
+          tagPriority: 'critical'
+        },
+        {
           src: 'https://challenges.cloudflare.com/turnstile/v0/api.js',
           async: true,
           defer: true

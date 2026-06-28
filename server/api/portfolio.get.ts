@@ -10,7 +10,7 @@ export default defineEventHandler((): PortfolioPayload => {
       role: 'Software Developer',
       headline: 'Joshua Paulo Ynzon',
       summary:
-        'Software developer with production experience supporting multi-country e-commerce platforms. I design and maintain Laravel APIs, shape scalable database schemas, and deliver frontend features with Vue and Nuxt.',
+        'Full-stack developer with production experience building and maintaining a multi-brand sticker e-commerce operation across seven country storefronts. I design and maintain Laravel APIs, shape scalable database schemas, and ship frontend features with Vue and Nuxt.',
       location: 'Toledo City, Cebu, Philippines',
       availability: 'Open to software developer roles and collaborative product work',
       ctaPrimary: {
@@ -27,7 +27,7 @@ export default defineEventHandler((): PortfolioPayload => {
       },
       stats: [
         { value: '2+ Years', label: 'Professional Experience' },
-        { value: '8 Markets', label: 'International E-commerce Support' },
+        { value: '7 Markets', label: 'International E-commerce Storefronts' },
         { value: 'Infinite caffeine', label: 'Energy Level' }
       ]
     },
@@ -35,13 +35,14 @@ export default defineEventHandler((): PortfolioPayload => {
       intro:
         "I'm Joshua, a software developer from Toledo City, Cebu, focused on building dependable systems with clean architecture and practical execution.",
       paragraphs: [
-        'I enjoy turning complex business workflows into software that teams can trust day to day. Most of my professional work has been backend-focused, building Laravel APIs for shipping schedules, tracking imports, and multi-country e-commerce operations.',
-        'I work comfortably across the stack when needed, using Vue and Nuxt to ship frontend features that align with backend constraints. That full-stack context helps me make better tradeoffs and deliver features end to end.',
-        'Beyond coding, I value collaboration and clarity. My experience as an IT instructor strengthened how I explain technical ideas, support teammates, and keep delivery moving with calm ownership.'
+        'I enjoy turning complex business workflows into software that teams can trust day to day. Most of my professional work centers on a multi-brand e-commerce platform serving seven country storefronts (Korea, Japan, the US, Canada, Australia, New Zealand, and Singapore), where I build Laravel APIs for authentication, shipping schedules, courier tracking, and order operations.',
+        'I work across the stack — Laravel and MySQL on the backend, Vue and Nuxt with TypeScript on the frontend — and I lean on AI-assisted tools like Claude Code to ship faster without losing maintainability. That full-stack context helps me make better tradeoffs and deliver features end to end.',
+        'I have owned real systems in production: customer authentication with OTP and social SSO, production and shipping scheduling, courier tracking, and internationalization across markets. I care about clarity and ownership, and keep delivery calm and steady under real-world constraints.'
       ],
       strengths: [
-        'Backend-first engineer with full-stack execution capability',
+        'Full-stack engineer with strong backend depth (Laravel + Vue/Nuxt)',
         'RESTful API architecture for multi-country e-commerce workflows',
+        'Authentication, SSO, and internationalization for global storefronts',
         'Database design, ERD planning, and performance tuning',
         'Production issue handling with stable, iterative releases',
         'Clear communication with product, support, and frontend teams'
@@ -63,8 +64,10 @@ export default defineEventHandler((): PortfolioPayload => {
         items: [
           { label: 'Vue.js', icon: si('vuedotjs') },
           { label: 'Nuxt.js', icon: si('nuxtdotjs') },
+          { label: 'Pinia', icon: si('pinia') },
           { label: 'Vuetify', icon: si('vuetify') },
           { label: 'React.js', icon: si('react') },
+          { label: 'TypeScript', icon: si('typescript') },
           { label: 'SCSS', icon: si('sass') }
         ]
       },
@@ -72,6 +75,7 @@ export default defineEventHandler((): PortfolioPayload => {
         title: 'Backend',
         items: [
           { label: 'Laravel', icon: si('laravel') },
+          { label: 'Laravel Passport', icon: si('laravel') },
           { label: 'Node.js', icon: si('nodedotjs') },
           { label: 'Express.js', icon: si('express') },
           { label: 'Django', icon: si('django') },
@@ -93,6 +97,7 @@ export default defineEventHandler((): PortfolioPayload => {
         items: [
           { label: 'Git', icon: si('git') },
           { label: 'GitHub', icon: si('github') },
+          { label: 'AWS CodeCommit', icon: si('amazonwebservices') },
           { label: 'Postman', icon: si('postman') },
           { label: 'Jenkins', icon: si('jenkins') },
           { label: 'Vagrant', icon: si('vagrant') },
@@ -106,15 +111,17 @@ export default defineEventHandler((): PortfolioPayload => {
     projects: [
       {
         id: 'global-ecommerce',
-        title: 'Global E-commerce Operations Platform',
+        title: 'Multi-Brand E-commerce Platform (7 Markets)',
         period: '2025 to 2026',
         summary:
-          'Developed and maintained operations-driven APIs and supporting frontend integrations for international e-commerce teams.',
-        stack: ['Laravel', 'Nuxt.js', 'Vue.js', 'MySQL'],
+          'Core developer on a multi-brand sticker e-commerce platform serving seven country storefronts (Korea, Japan, the US, Canada, Australia, New Zealand, and Singapore). Built and maintained operations-critical APIs, admin tooling, and storefront features.',
+        stack: ['Laravel', 'Nuxt.js', 'Vue.js', 'TypeScript', 'MySQL'],
         highlights: [
-          'Built production and shipping schedule modules for country-specific workflows.',
-          'Implemented courier tracking data import and management flows.',
-          'Standardized API responses across EN, KR, and JP storefronts.'
+          'Built end-to-end customer authentication: OTP verification, password reset, Google/Kakao SSO, and trusted-device login with Laravel Passport.',
+          'Owned Production & Shipping Schedule Management across all storefronts, computing delivery dates across holidays and courier off-days.',
+          'Built Manage Shipping and Glophics Shipping admin modules: order merging/splitting, batch numbering, and CSV export.',
+          'Implemented Tracking Management, centralized order-status workflows, and invoice/job-details PDF generation.',
+          'Delivered internationalization (including Korea and Japan) and hardened the platform with SQL-injection detection and an audit trail.'
         ],
         media: {
           banner: 'https://res.cloudinary.com/du6rliaeg/image/upload/v1777714141/image_1_vxrqv4.png',
@@ -126,7 +133,7 @@ export default defineEventHandler((): PortfolioPayload => {
           alt: 'Global e-commerce systems dashboard placeholder image'
         },
         links: [
-          { label: 'Dev Website', href: 'https://dev.musticker.com'}
+          { label: 'Live Website', href: 'https://www.musticker.com/kr'}
         ],
         featured: true
       },
@@ -151,9 +158,7 @@ export default defineEventHandler((): PortfolioPayload => {
           ],
           alt: 'PassaQuiz platform placeholder image'
         },
-        links: [
-          { label: 'Dev Website', href: 'https://games.passafund.com'}
-        ],
+        links: [],
         featured: true
       },
       {
@@ -209,13 +214,14 @@ export default defineEventHandler((): PortfolioPayload => {
       {
         role: 'Full Stack Web Developer',
         company: 'Glophics PH Inc.',
+        logo: '/images/company/glophics.webp',
         period: 'May 2025 to April 2026',
         summary:
-          'Owned business-critical API development for international e-commerce operations and collaborated with product, support, and frontend teams to deliver stable releases.',
+          'Core developer on the company\'s sticker e-commerce platform powering seven country storefronts. Maintained the existing brand sites and shipped new platform features, collaborating with product, support, and frontend teams to deliver stable releases.',
         highlights: [
-          'Designed scalable REST endpoints and standardized API structures.',
-          'Implemented shipping, schedule, tracking, and authentication features.',
-          'Contributed to ERD planning and schema decisions for localization needs.'
+          'Built the customer authentication system (OTP, Google/Kakao SSO, trusted device) with Laravel Passport and cookie-based auth.',
+          'Owned production & shipping scheduling, manage-shipping tooling, courier tracking, and order/invoice workflows across markets.',
+          'Delivered internationalization (KR/JP), search, and platform hardening; contributed to ERD design and a service/repository architecture using AI-assisted tools.'
         ],
         media: {
           banner: 'https://res.cloudinary.com/du6rliaeg/image/upload/v1777714141/image_1_vxrqv4.png',
@@ -229,7 +235,8 @@ export default defineEventHandler((): PortfolioPayload => {
       },
       {
         role: 'Software Engineer Intern',
-        company: 'Passafund',
+        company: 'nCase PH',
+        logo: '/images/company/ncase.webp',
         period: 'June 2024 to January 2025',
         summary:
           'Built full-stack features for quiz and admin products while improving maintainability through refactoring.',
@@ -249,6 +256,7 @@ export default defineEventHandler((): PortfolioPayload => {
       {
         role: 'College IT Instructor',
         company: 'Consolatrix College of Toledo City, Inc.',
+        logo: '/images/company/cctc.webp',
         period: 'June 2025 to October 2025',
         summary:
           'Taught practical system administration and Laravel client-server fundamentals with hands-on training.',

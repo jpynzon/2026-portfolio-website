@@ -1,24 +1,63 @@
+/* ===========================================================
+   Design tokens — light (default) + dark themes
+   Theme is switched via [data-theme="dark"] on <html>.
+   =========================================================== */
+
 :root {
-  --bg: #f6f4ef;
+  color-scheme: light;
+
+  /* Surfaces */
+  --bg: #f7f8fb;
   --bg-elevated: #ffffff;
-  --text-primary: #1e2a32;
-  --text-secondary: #5c6872;
-  --line: #dde3e8;
-  --accent: #0e7c86;
-  --accent-soft: #daf0f2;
+  --surface: #ffffff;
+  --surface-2: #f1f3f7;
+  --surface-3: #e9edf3;
+
+  /* Text */
+  --text-primary: #0e1320;
+  --text-secondary: #586173;
+  --text-muted: #828c9b;
+
+  /* Lines */
+  --line: #e7e9ef;
+  --line-strong: #d7dbe3;
+
+  /* Brand */
+  --accent: #6d5dfc;
+  --accent-strong: #5a47f0;
+  --accent-soft: #ece9ff;
+  --accent-contrast: #ffffff;
+  --accent-rgb: 109 93 252;
+
   --warm: #ff6b57;
-  --warm-soft: #ffe6e0;
+  --warm-soft: #ffe7e1;
+  --warm-rgb: 255 107 87;
 
-  --radius-sm: 14px;
-  --radius-md: 20px;
-  --radius-lg: 28px;
+  /* Status */
+  --success: #15914f;
+  --danger: #c5453a;
 
-  --shadow-soft: 0 20px 45px -34px rgb(17 33 51 / 0.35);
+  /* Effects */
+  --grad-brand: linear-gradient(135deg, #6d5dfc 0%, #a96cf2 52%, #ff6b57 120%);
+  --grad-text: linear-gradient(120deg, #6d5dfc 0%, #b06cf0 60%, #ff7a59 100%);
+  --ring: 0 0 0 3px rgb(var(--accent-rgb) / 0.28);
+  --shadow-soft: 0 18px 45px -30px rgb(20 27 45 / 0.4);
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.05), 0 16px 36px -26px rgb(16 24 40 / 0.28);
+  --shadow-pop: 0 24px 60px -28px rgb(20 27 45 / 0.45);
+  --glass: color-mix(in srgb, var(--bg-elevated) 72%, transparent);
 
+  /* Radii */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-pill: 999px;
+
+  /* Type */
   --font-heading: 'Sora', 'Segoe UI', sans-serif;
   --font-body: 'Instrument Sans Variable', 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', 'Consolas', monospace;
 
+  /* Spacing */
   --space-1: 0.5rem;
   --space-2: 0.75rem;
   --space-3: 1rem;
@@ -28,3 +67,40 @@
   --space-7: 4.5rem;
 }
 
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #0a0c12;
+  --bg-elevated: #11141d;
+  --surface: #11141d;
+  --surface-2: #161a24;
+  --surface-3: #1c2130;
+
+  --text-primary: #eef1f7;
+  --text-secondary: #a4adbd;
+  --text-muted: #7a8494;
+
+  --line: #232836;
+  --line-strong: #2e3543;
+
+  --accent: #8b7dff;
+  --accent-strong: #9c90ff;
+  --accent-soft: #1b1933;
+  --accent-contrast: #0a0c12;
+  --accent-rgb: 139 125 255;
+
+  --warm: #ff7d68;
+  --warm-soft: #2a1b18;
+  --warm-rgb: 255 125 104;
+
+  --success: #3ad17f;
+  --danger: #ff6b5e;
+
+  --grad-brand: linear-gradient(135deg, #8b7dff 0%, #b98bf2 52%, #ff7d68 120%);
+  --grad-text: linear-gradient(120deg, #9b8dff 0%, #c79bf0 55%, #ff8e75 100%);
+  --ring: 0 0 0 3px rgb(var(--accent-rgb) / 0.32);
+  --shadow-soft: 0 24px 55px -30px rgb(0 0 0 / 0.75);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.5), 0 22px 44px -28px rgb(0 0 0 / 0.7);
+  --shadow-pop: 0 30px 70px -30px rgb(0 0 0 / 0.8);
+  --glass: color-mix(in srgb, var(--bg-elevated) 68%, transparent);
+}

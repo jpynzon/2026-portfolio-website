@@ -80,9 +80,23 @@ watch(isViewerOpen, (isOpen) => {
 
 <template>
   <article class="timeline-item">
-    <p class="timeline-item__period">{{ item.period }}</p>
-    <h3 class="timeline-item__role">{{ item.role }}</h3>
-    <p class="timeline-item__company">{{ item.company }}</p>
+    <div class="timeline-item__head">
+      <div class="timeline-item__head-text">
+        <p class="timeline-item__period">{{ item.period }}</p>
+        <h3 class="timeline-item__role">{{ item.role }}</h3>
+        <p class="timeline-item__company">{{ item.company }}</p>
+      </div>
+      <img
+        v-if="item.logo"
+        class="timeline-item__logo"
+        :src="item.logo"
+        :alt="`${item.company} logo`"
+        width="48"
+        height="48"
+        loading="lazy"
+        @error="($event.target as HTMLImageElement).style.display = 'none'"
+      >
+    </div>
     <p class="timeline-item__summary">{{ item.summary }}</p>
     <ul class="timeline-item__highlights">
       <li v-for="highlight in item.highlights" :key="highlight">{{ highlight }}</li>
