@@ -7,13 +7,41 @@ defineProps<{
 
 const { toggle, sync } = useTheme()
 
+const isMenuOpen = ref(false)
+const headerEl = ref<HTMLElement | null>(null)
+
+const closeMenu = () => {
+  isMenuOpen.value = false
+}
+
+// Close the menu after navigating, when tapping outside, or on Escape.
+const route = useRoute()
+watch(() => route.fullPath, closeMenu)
+
+const onDocumentClick = (event: MouseEvent) => {
+  if (isMenuOpen.value && headerEl.value && !headerEl.value.contains(event.target as Node)) {
+    closeMenu()
+  }
+}
+
+const onKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape') closeMenu()
+}
+
 onMounted(() => {
   sync()
+  document.addEventListener('click', onDocumentClick)
+  document.addEventListener('keydown', onKeydown)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', onDocumentClick)
+  document.removeEventListener('keydown', onKeydown)
 })
 </script>
 
 <template>
-  <header class="app-header">
+  <header ref="headerEl" class="app-header">
     <div class="app-header__inner">
       <NuxtLink to="/" class="app-header__brand" aria-label="Go to homepage">
         <img src="/logo.svg" alt="" width="38" height="38" class="app-header__brand-mark">
@@ -43,7 +71,35 @@ onMounted(() => {
         </button>
 
         <NuxtLink class="app-header__cta" to="/#contact">Let's Talk</NuxtLink>
+
+        <button
+          type="button"
+          class="app-header__toggle app-header__menu-btn"
+          :aria-expanded="isMenuOpen"
+          aria-controls="mobile-nav"
+          aria-label="Toggle navigation menu"
+          @click="isMenuOpen = !isMenuOpen"
+        >
+          <svg v-if="!isMenuOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
       </div>
     </div>
+
+    <nav v-if="isMenuOpen" id="mobile-nav" class="app-header__menu" aria-label="Mobile navigation">
+      <NuxtLink
+        v-for="link in links"
+        :key="link.href"
+        :to="link.href"
+        class="app-header__menu-link"
+        @click="closeMenu"
+      >
+        {{ link.label }}
+      </NuxtLink>
+    </nav>
   </header>
 </template>

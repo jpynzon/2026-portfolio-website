@@ -81,6 +81,7 @@ const {
               <input
                 v-model="newMessage"
                 type="text"
+                maxlength="1000"
                 placeholder="Type your message..."
                 :disabled="isLoading"
                 @keypress="handleKeyPress"

@@ -96,9 +96,16 @@ export function useChatbot() {
       messages.value.push(botMessage)
       nextTick(scrollToBottom)
     } catch (error) {
+      const status = (error as { status?: number; statusCode?: number })?.status
+        ?? (error as { statusCode?: number })?.statusCode
+      const errorText = status === 429
+        ? 'You\'re sending messages a bit too fast. Please wait a moment and try again.'
+        : status === 400
+          ? 'That message couldn\'t be sent. Please keep it under 1000 characters.'
+          : 'Sorry, I\'m having trouble connecting. Please try again later.'
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
-        text: 'Sorry, I\'m having trouble connecting. Please try again later.',
+        text: errorText,
         isUser: false,
         timestamp: new Date()
       }
