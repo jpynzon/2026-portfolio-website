@@ -16,7 +16,7 @@ export default defineNuxtConfig({
       apiBase: process.env.NUXT_BACKEND_API_BASE || 'https://api.jpynzon.dev/api',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.jpynzon.dev',
       turnstile: {
-        siteKey: process.env.NUXT_TURNSTILE_SITE_KEY || ''
+        siteKey: process.env.NUXT_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'
       }
     }
   },
@@ -26,6 +26,11 @@ export default defineNuxtConfig({
   app: {
     head: {
       titleTemplate: '%s | Joshua Paulo Ynzon',
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'apple-touch-icon', href: '/logo.svg' }
+      ],
       script: [
         {
           // Apply the saved/system theme before first paint (no flash).

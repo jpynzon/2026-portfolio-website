@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Joshua Paulo Ynzon">
+  <defs>
+    <linearGradient id="jy-brand" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6d5dfc"/>
+      <stop offset=".52" stop-color="#a96cf2"/>
+      <stop offset="1" stop-color="#ff6b57"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="14" fill="url(#jy-brand)"/>
+  <circle cx="25.5" cy="13.6" r="3.2" fill="#ff6b57"/>
+  <path d="M25.5 20 V31.5 C25.5 35.6 21 37 16.8 33.7" fill="none" stroke="#fff" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -16,7 +16,7 @@ onMounted(() => {
   <header class="app-header">
     <div class="app-header__inner">
       <a href="#home" class="app-header__brand" aria-label="Go to homepage">
-        JPY
+        <img src="/logo.svg" alt="" width="38" height="38" class="app-header__brand-mark">
       </a>
 
       <nav class="app-header__nav" aria-label="Main navigation">
