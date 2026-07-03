@@ -215,7 +215,7 @@ export default defineEventHandler((): PortfolioPayload => {
         role: 'Full Stack Web Developer',
         company: 'Glophics PH Inc.',
         logo: '/images/company/glophics.webp',
-        period: 'May 2025 to April 2026',
+        period: 'May 2025 to Present',
         summary:
           'Core developer on the company\'s sticker e-commerce platform powering seven country storefronts. Maintained the existing brand sites and shipped new platform features, collaborating with product, support, and frontend teams to deliver stable releases.',
         highlights: [
