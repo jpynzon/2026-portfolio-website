@@ -37,7 +37,7 @@ function handleKeydown(event: KeyboardEvent) {
       class="chat-input__field"
       rows="1"
       :maxlength="CHAT_LIMITS.MAX_MESSAGE_LENGTH"
-      :disabled="props.disabled"
+      :disabled="props.disabled || true"
       :placeholder="props.disabled ? 'Connecting…' : 'Write a message…'"
       aria-label="Message"
       @keydown="handleKeydown"
