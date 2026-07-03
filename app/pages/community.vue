@@ -9,6 +9,7 @@ const {
   isLoadingHistory,
   historyError,
   sendError,
+  cooldownRemaining,
   sendMessage,
   setUsername
 } = useCommunityChat()
@@ -44,6 +45,7 @@ function handleRename(name: string) {
         :is-loading-history="isLoadingHistory"
         :history-error="historyError"
         :send-error="sendError"
+        :cooldown-remaining="cooldownRemaining"
         @send="handleSend"
         @rename="handleRename"
       />

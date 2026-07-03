@@ -13,6 +13,7 @@ const props = defineProps<{
   isLoadingHistory: boolean
   historyError: string | null
   sendError: string | null
+  cooldownRemaining: number
 }>()
 
 const emit = defineEmits<{
@@ -52,7 +53,11 @@ function handleRename(name: string) {
       {{ props.sendError }}
     </p>
 
-    <ChatInput :disabled="props.status !== 'connected'" @submit="handleSend" />
+    <ChatInput
+      :disabled="props.status !== 'connected'"
+      :cooldown-remaining="props.cooldownRemaining"
+      @submit="handleSend"
+    />
   </section>
 </template>
 

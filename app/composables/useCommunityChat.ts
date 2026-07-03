@@ -1,6 +1,7 @@
 import type { Socket } from 'socket.io-client'
 import { createCommunitySocket } from '~/services/community/socket.service'
 import { communityService } from '~/services/community/community.api.service'
+import { createChatRateLimiter } from '~/utils/chatRateLimiter'
 import {
   CLIENT_EVENT,
   SERVER_EVENT,
@@ -51,7 +52,30 @@ export function useCommunityChat() {
   // or any accidental re-emit on reconnect).
   const seenMessageIds = new Set<string>()
 
+  // Rate-limit countdown (seconds) shown on the send button.
+  const cooldownRemaining = ref(0)
+  const limiter = createChatRateLimiter()
+  let cooldownTimer: ReturnType<typeof setInterval> | null = null
+
   let socket: Socket | null = null
+
+  function stopCooldownTimer() {
+    if (cooldownTimer) {
+      clearInterval(cooldownTimer)
+      cooldownTimer = null
+    }
+  }
+
+  function startCooldown(ms: number) {
+    const seconds = Math.ceil(ms / 1000)
+    if (seconds <= 0) return
+    cooldownRemaining.value = seconds
+    stopCooldownTimer()
+    cooldownTimer = setInterval(() => {
+      cooldownRemaining.value = Math.max(0, cooldownRemaining.value - 1)
+      if (cooldownRemaining.value === 0) stopCooldownTimer()
+    }, 1000)
+  }
 
   const addMessage = (message: CommunityMessage) => {
     if (seenMessageIds.has(message.id)) return
@@ -175,7 +199,15 @@ export function useCommunityChat() {
       return false
     }
 
+    // Client-side rate limit (server is authoritative and re-checks).
+    const verdict = limiter.attempt(Date.now())
+    if (!verdict.allowed) {
+      startCooldown(verdict.retryAfterMs)
+      return false
+    }
+
     socket.emit(CLIENT_EVENT.Message, { text })
+    startCooldown(verdict.nextCooldownMs)
     return true
   }
 
@@ -212,7 +244,10 @@ export function useCommunityChat() {
     loadHistory()
     connect()
   })
-  onBeforeUnmount(disconnect)
+  onBeforeUnmount(() => {
+    disconnect()
+    stopCooldownTimer()
+  })
 
   return {
     feed,
@@ -223,6 +258,7 @@ export function useCommunityChat() {
     isLoadingHistory,
     historyError,
     sendError,
+    cooldownRemaining,
     sendMessage,
     setUsername
   }

@@ -4,6 +4,7 @@ import { CHAT_LIMITS } from '~/types/community'
 
 const props = defineProps<{
   disabled: boolean
+  cooldownRemaining: number
 }>()
 
 const emit = defineEmits<{
@@ -13,7 +14,14 @@ const emit = defineEmits<{
 const draft = ref('')
 
 const remaining = computed(() => CHAT_LIMITS.MAX_MESSAGE_LENGTH - draft.value.length)
-const canSend = computed(() => !props.disabled && draft.value.trim().length > 0)
+const isCoolingDown = computed(() => props.cooldownRemaining > 0)
+const canSend = computed(
+  () => !props.disabled && !isCoolingDown.value && draft.value.trim().length > 0
+)
+
+const sendLabel = computed(() =>
+  isCoolingDown.value ? `${props.cooldownRemaining}s` : 'Send'
+)
 
 function submit() {
   if (!canSend.value) return
@@ -37,7 +45,7 @@ function handleKeydown(event: KeyboardEvent) {
       class="chat-input__field"
       rows="1"
       :maxlength="CHAT_LIMITS.MAX_MESSAGE_LENGTH"
-      :disabled="props.disabled || true"
+      :disabled="props.disabled"
       :placeholder="props.disabled ? 'Connecting…' : 'Write a message…'"
       aria-label="Message"
       @keydown="handleKeydown"
@@ -47,8 +55,14 @@ function handleKeydown(event: KeyboardEvent) {
         class="chat-input__counter"
         :class="{ 'chat-input__counter--low': remaining < 40 }"
       >{{ remaining }}</span>
-      <button type="submit" class="chat-input__send" :disabled="!canSend">
-        Send
+      <button
+        type="submit"
+        class="chat-input__send"
+        :class="{ 'chat-input__send--cooldown': isCoolingDown }"
+        :disabled="!canSend"
+        :title="isCoolingDown ? `Wait ${props.cooldownRemaining}s before sending again` : 'Send message'"
+      >
+        {{ sendLabel }}
       </button>
     </div>
   </form>
@@ -107,6 +121,7 @@ function handleKeydown(event: KeyboardEvent) {
 }
 
 .chat-input__send {
+  min-width: 4.2rem;
   padding: 0.55rem 1.1rem;
   border: none;
   border-radius: var(--radius-pill);
@@ -126,5 +141,9 @@ function handleKeydown(event: KeyboardEvent) {
 .chat-input__send:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.chat-input__send--cooldown {
+  font-family: var(--font-mono);
 }
 </style>

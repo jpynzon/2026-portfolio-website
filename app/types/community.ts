@@ -58,6 +58,14 @@ export const USERNAME_LIMITS = {
   MAX_LENGTH: 20,
 } as const
 
+// Mirrors the server's rate limit (api/src/websocket/constants.ts) so the UI
+// can show a countdown. The server remains authoritative.
+export const RATE_LIMIT = {
+  MESSAGE_COOLDOWN_MS: 5000,
+  BURST_LIMIT: 5,
+  BURST_COOLDOWN_MS: 10000,
+} as const
+
 export interface WelcomePayload {
   user: PresenceUser
 }
