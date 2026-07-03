@@ -15,14 +15,14 @@ onMounted(() => {
 <template>
   <header class="app-header">
     <div class="app-header__inner">
-      <a href="#home" class="app-header__brand" aria-label="Go to homepage">
+      <NuxtLink to="/" class="app-header__brand" aria-label="Go to homepage">
         <img src="/logo.svg" alt="" width="38" height="38" class="app-header__brand-mark">
-      </a>
+      </NuxtLink>
 
       <nav class="app-header__nav" aria-label="Main navigation">
-        <a v-for="link in links" :key="link.href" :href="link.href" class="app-header__link">
+        <NuxtLink v-for="link in links" :key="link.href" :to="link.href" class="app-header__link">
           {{ link.label }}
-        </a>
+        </NuxtLink>
       </nav>
 
       <div class="app-header__actions">
@@ -42,7 +42,7 @@ onMounted(() => {
           </svg>
         </button>
 
-        <a class="app-header__cta" href="#contact">Let's Talk</a>
+        <NuxtLink class="app-header__cta" to="/#contact">Let's Talk</NuxtLink>
       </div>
     </div>
   </header>

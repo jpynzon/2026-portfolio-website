@@ -10,12 +10,15 @@ export const usePortfolioStore = defineStore('portfolio', () => {
     () => content.value?.projects.filter((project) => project.featured) ?? []
   )
 
+  // Route-aware hrefs: the "/#section" form resolves from any page (it routes
+  // home first, then scrolls), while "/community" is a dedicated route.
   const navLinks = computed(() => [
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Journey', href: '#journey' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' }
+    { label: 'About', href: '/#about' },
+    { label: 'Skills', href: '/#skills' },
+    { label: 'Journey', href: '/#journey' },
+    { label: 'Projects', href: '/#projects' },
+    { label: 'Community', href: '/community' },
+    { label: 'Contact', href: '/#contact' }
   ])
 
   async function load(force = false) {
