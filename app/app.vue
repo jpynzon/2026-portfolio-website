@@ -1,3 +1,7 @@
+<script setup lang="ts">
+useAnalytics()
+</script>
+
 <template>
   <div class="site-shell">
     <NuxtRouteAnnouncer />

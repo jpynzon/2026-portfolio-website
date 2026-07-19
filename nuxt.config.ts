@@ -15,6 +15,7 @@ export default defineNuxtConfig({
       staticApiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
       apiBase: process.env.NUXT_BACKEND_API_BASE || 'https://portfolio-api.jpynzon.dev/api',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.jpynzon.dev',
+      gaId: process.env.NUXT_PUBLIC_GA_ID || 'G-ZWWMZ1YJ0V',
       turnstile: {
         siteKey: process.env.NUXT_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'
       }
