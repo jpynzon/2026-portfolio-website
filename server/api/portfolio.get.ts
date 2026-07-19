@@ -110,6 +110,34 @@ export default defineEventHandler((): PortfolioPayload => {
     ],
     projects: [
       {
+        id: 'aion-tempest',
+        title: 'Aion Tempest',
+        period: '2026',
+        summary:
+          'A full-stack website and player account portal for the Aion Tempest private MMORPG server, built with Laravel 12 and Tailwind CSS. It plugs directly into the live Aion game database to handle account registration and authentication, live realm status, rankings, downloads, VIP memberships, redeem codes, and an in-game currency (Toll) shop.',
+        stack: ['Laravel', 'PHP', 'Blade', 'Tailwind CSS', 'MySQL', 'Vite'],
+        highlights: [
+          'Built the player account system on Laravel 12: registration, login, email verification (signed URLs and throttling), and password reset, backed by the game account_data table.',
+          'Integrated with the live Aion MySQL database (players, legions, abyss ranks) to power real-time realm and server status plus the rankings boards.',
+          'Implemented the rankings engine: Abyss points, Glory points, level, kills, and legion boards with search, faction and class filters, and pagination.',
+          'Shipped monetization and account features: a Toll in-game currency shop, VIP memberships, and redeemable codes.',
+          'Rendered every page with Blade and Tailwind CSS v4 via Vite, added launcher auto-update and maintenance flows, and covered the app with Pest tests.'
+        ],
+        media: {
+          banner: 'https://res.cloudinary.com/du6rliaeg/image/upload/v1784472840/home_t9axjc.webp',
+          gallery: [
+            'https://res.cloudinary.com/du6rliaeg/image/upload/v1784472840/ranking_mtfymv.webp',
+            'https://res.cloudinary.com/du6rliaeg/image/upload/v1784472840/shop_l7rvxx.webp',
+            'https://res.cloudinary.com/du6rliaeg/image/upload/v1784472840/download_lesxxi.webp'
+          ],
+          alt: 'Aion Tempest private server website'
+        },
+        links: [
+          { label: 'Live Website', href: 'https://www.aiontempest.com/' }
+        ],
+        featured: true
+      },
+      {
         id: 'global-ecommerce',
         title: 'Multi-Brand E-commerce Platform (7 Markets)',
         period: '2025 to 2026',
