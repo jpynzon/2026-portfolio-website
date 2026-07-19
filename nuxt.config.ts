@@ -24,6 +24,17 @@ export default defineNuxtConfig({
   image: {
     domains: ['picsum.photos', 'i.pravatar.cc', 'res.cloudinary.com']
   },
+  nitro: {
+    prerender: {
+      // Build the blog to static HTML at build time (when the content database
+      // is available), so deep links work without depending on the runtime
+      // server-side DB. Posts are discovered by crawling the /blog list.
+      // Everything outside /blog stays server-rendered.
+      crawlLinks: true,
+      routes: ['/blog'],
+      ignore: [(route: string) => !route.startsWith('/blog')]
+    }
+  },
   app: {
     head: {
       titleTemplate: '%s | Joshua Paulo Ynzon',
