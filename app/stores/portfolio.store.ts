@@ -18,6 +18,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
     { label: 'Journey', href: '/#journey' },
     { label: 'Projects', href: '/#projects' },
     { label: 'Community', href: '/community' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/#contact' }
   ])
 

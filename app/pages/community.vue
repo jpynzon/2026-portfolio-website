@@ -56,7 +56,7 @@ function handleRename(name: string) {
 <style scoped>
 .community-page {
   position: relative;
-  width: min(880px, calc(100% - 2.5rem));
+  width: min(1180px, calc(100% - 2.5rem));
   margin: 0 auto;
   padding-bottom: var(--space-7);
 }

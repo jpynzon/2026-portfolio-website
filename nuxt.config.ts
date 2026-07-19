@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-05-02',
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', '@vueuse/motion/nuxt', '@nuxt/image', '@vercel/analytics/nuxt'],
+  modules: ['@pinia/nuxt', '@vueuse/motion/nuxt', '@nuxt/image', '@nuxt/content', '@vercel/analytics/nuxt'],
   components: [
     {
       path: '~/components',
@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     }
   },
   image: {
-    domains: ['picsum.photos', 'i.pravatar.cc']
+    domains: ['picsum.photos', 'i.pravatar.cc', 'res.cloudinary.com']
   },
   app: {
     head: {
